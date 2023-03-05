@@ -1,5 +1,6 @@
 import {$,jQuery} from 'jquery';
-$(document).ready(function() {
-    console.log($);
-});
 
+window.$ = $;
+window.jQuery = jQuery;
+
+console.log($);
