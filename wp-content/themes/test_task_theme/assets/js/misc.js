@@ -1,3 +1,4 @@
-import '../node_modules/jquery/src/jquery.js';
+var $ = require( "jquery" );
+
 console.log($);
 console.log(jQuery);
