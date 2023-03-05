@@ -6,7 +6,8 @@ wp-*.php
 /index.php
 license.txt
 xmlrpc.php
-
+installer.php
+*.zip
 # ignore everything in the "wp-content" directory, except:
 # "mu-plugins", "plugins", "themes" directory
 wp-content/*
