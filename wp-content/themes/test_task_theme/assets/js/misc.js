@@ -1,6 +1,3 @@
-import * as $ from '../node_modules/jquery/dist/jquery.min.js';
-$ = window.$;
-$(document).ready(function() {
-    console.log($);
-});
-
+import 'jquery';
+console.log($);
+console.log(jQuery);
