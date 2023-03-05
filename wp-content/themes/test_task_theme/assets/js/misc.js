@@ -1,2 +1,3 @@
-console.log($);
-console.log(jQuery);
+$(document).ready(function() {
+
+});
