@@ -1,96 +1,109 @@
 <?php
 /**
- * The base configuration for WordPress
+ * Основные параметры WordPress.
  *
- * The wp-config.php creation script uses this file during the installation.
- * You don't have to use the web site, you can copy this file to "wp-config.php"
- * and fill in the values.
+ * Скрипт для создания wp-config.php использует этот файл в процессе установки.
+ * Необязательно использовать веб-интерфейс, можно скопировать файл в "wp-config.php"
+ * и заполнить значения вручную.
  *
- * This file contains the following configurations:
+ * Этот файл содержит следующие параметры:
  *
- * * Database settings
- * * Secret keys
- * * Database table prefix
+ * * Настройки MySQL
+ * * Секретные ключи
+ * * Префикс таблиц базы данных
  * * ABSPATH
  *
- * @link https://wordpress.org/support/article/editing-wp-config-php/
+ * @link https://ru.wordpress.org/support/article/editing-wp-config-php/
  *
  * @package WordPress
  */
 
-// ** Database settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define( 'DB_NAME', 'cessel_wp28' );
+//Begin Really Simple SSL Load balancing fix
+if ((isset($_ENV["HTTPS"]) && ("on" == $_ENV["HTTPS"]))
+|| (isset($_SERVER["HTTP_X_FORWARDED_SSL"]) && (strpos($_SERVER["HTTP_X_FORWARDED_SSL"], "1") !== false))
+|| (isset($_SERVER["HTTP_X_FORWARDED_SSL"]) && (strpos($_SERVER["HTTP_X_FORWARDED_SSL"], "on") !== false))
+|| (isset($_SERVER["HTTP_CF_VISITOR"]) && (strpos($_SERVER["HTTP_CF_VISITOR"], "https") !== false))
+|| (isset($_SERVER["HTTP_CLOUDFRONT_FORWARDED_PROTO"]) && (strpos($_SERVER["HTTP_CLOUDFRONT_FORWARDED_PROTO"], "https") !== false))
+|| (isset($_SERVER["HTTP_X_FORWARDED_PROTO"]) && (strpos($_SERVER["HTTP_X_FORWARDED_PROTO"], "https") !== false))
+|| (isset($_SERVER["HTTP_X_PROTO"]) && (strpos($_SERVER["HTTP_X_PROTO"], "SSL") !== false))
+) {
+$_SERVER["HTTPS"] = "on";
+}
+//END Really Simple SSL
 
-/** Database username */
-define( 'DB_USER', 'cessel_wp28' );
+// ** Параметры базы данных: Эту информацию можно получить у вашего хостинг-провайдера ** //
+/** Имя базы данных для WordPress */
+define( 'DB_NAME', "cessel_wp28" );
 
-/** Database password */
-define( 'DB_PASSWORD', 'L1&e7Q*^v' );
+/** Имя пользователя базы данных */
+define( 'DB_USER', "cessel_wp28" );
 
-/** Database hostname */
-define( 'DB_HOST', 'localhost' );
+/** Пароль к базе данных */
+define( 'DB_PASSWORD', "L1&e7Q*^v" );
 
-/** Database charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8mb4' );
+/** Имя сервера базы данных */
+define( 'DB_HOST', "localhost" );
 
-/** The database collate type. Don't change this if in doubt. */
+/** Кодировка базы данных для создания таблиц. */
+define( 'DB_CHARSET', 'utf8' );
+
+/** Схема сопоставления. Не меняйте, если не уверены. */
 define( 'DB_COLLATE', '' );
 
 /**#@+
- * Authentication unique keys and salts.
+ * Уникальные ключи и соли для аутентификации.
  *
- * Change these to different unique phrases! You can generate these using
- * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
+ * Смените значение каждой константы на уникальную фразу. Можно сгенерировать их с помощью
+ * {@link https://api.wordpress.org/secret-key/1.1/salt/ сервиса ключей на WordPress.org}.
  *
- * You can change these at any point in time to invalidate all existing cookies.
- * This will force all users to have to log in again.
+ * Можно изменить их, чтобы сделать существующие файлы cookies недействительными.
+ * Пользователям потребуется авторизоваться снова.
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',         'a7**A1oAS3})~d_RVaOck!<:xorN~Bp]c_JJHvo]uJF.o8W7N,wLjd~YQ07(TuCE' );
-define( 'SECURE_AUTH_KEY',  '};X# `&%:zW8O>D{WX,}DF`rig!n_ecAys]*r{Akdy%283_dHeS@c!Pe kT0p%s]' );
-define( 'LOGGED_IN_KEY',    '/9.^#|p<,L6tKF)<}2bRnJ@UGds|wO$M1g/s;x~U])TlocVs]uZ?>Y&>. dVi2U4' );
-define( 'NONCE_KEY',        '!rGxl6uaO>fqyyL)Ql[nmWv[S;)4MOm127q>Bl5Awb~D;#jq| G`dT@2}A#jkSkc' );
-define( 'AUTH_SALT',        '/1-/q@]M@^fWAgCU8L|S<WjIh9gyP+xg,7_hr5ci(OWTgM/SbbgvPQO?One*?~ed' );
-define( 'SECURE_AUTH_SALT', '7J 6DF9h1$XTcl8-yNe;lwXC=:Of3vS34A/2DwhJz0#=lDx(8AMDrv6xTkW|;,x#' );
-define( 'LOGGED_IN_SALT',   '&2<_a{];+C|U=cN^wR7VQMW1$<ixhxrlQZl`pNoPRj0T|Jtxc#7LGk$@0BlHG0C8' );
-define( 'NONCE_SALT',       'fLoOTXk@a^Q]:0k2`U%beKstrA<?0Fy~^#~ORD%aKgr&z~[Sk@cqpimy@+pMI@`/' );
+define('AUTH_KEY',         'p(<|[T8&?Cec^/(9i6_Q1z!B+- e;=.$&L5w?N(}T9{`B6U2&z_*nHP:GcZ|hocs');
+define('SECURE_AUTH_KEY',  'tC^9W.]:+CSVNT1u!U1>bdb6|gP%wJS9xh[G}g *+cYCKMhp)4Z)Pl$d;$DiTF&f');
+define('LOGGED_IN_KEY',    'Odnc`BM#cgF>aXk;nf&@}3zsa#H]M#UFKj?%.g{k!?X%585_ZDF%u[Ko.#|P>eI=');
+define('NONCE_KEY',        'tv*+~$K_0<2)5VaYjN!TZ/-pS+nG{+Uv33+5R6&,^gIcVDOnpl/8nw*aAKHQ;N8!');
+define('AUTH_SALT',        '-zTq{IrHXp@l17WZX(+kT1_i-GB|]<oT?lU-Ou-kds1%0tZHqse_(We+Y;>Yf:BY');
+define('SECURE_AUTH_SALT', '3m51GBz`{ai?:vr:;TLoVfmuyzZ2_~gM@<H2r?^YKv4R~P3;7?^}TU3[U$W23Q!t');
+define('LOGGED_IN_SALT',   '#tkQ^YH9iHGK(IzNjS&_4k}eUJaG7]NOkZCBEe-aNm(VQ6IKFA.z#V=v)-B||{d;');
+define('NONCE_SALT',       'O~:|}: | :xl~[O}V|vRboB7{O?cm.ZE@okgv P.Z2wz,s^J!=q^W{&~Toe!N BJ');
 
 /**#@-*/
 
 /**
- * WordPress database table prefix.
+ * Префикс таблиц в базе данных WordPress.
  *
- * You can have multiple installations in one database if you give each
- * a unique prefix. Only numbers, letters, and underscores please!
+ * Можно установить несколько сайтов в одну базу данных, если использовать
+ * разные префиксы. Пожалуйста, указывайте только цифры, буквы и знак подчеркивания.
  */
 $table_prefix = 'wp_';
 
 /**
- * For developers: WordPress debugging mode.
+ * Для разработчиков: Режим отладки WordPress.
  *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
+ * Измените это значение на true, чтобы включить отображение уведомлений при разработке.
+ * Разработчикам плагинов и тем настоятельно рекомендуется использовать WP_DEBUG
+ * в своём рабочем окружении.
  *
- * For information on other constants that can be used for debugging,
- * visit the documentation.
+ * Информацию о других отладочных константах можно найти в документации.
  *
- * @link https://wordpress.org/support/article/debugging-in-wordpress/
+ * @link https://ru.wordpress.org/support/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', false );
 
-/* Add any custom values between this line and the "stop editing" line. */
+/* Произвольные значения добавляйте между этой строкой и надписью "дальше не редактируем". */
 
 
 
-/* That's all, stop editing! Happy publishing. */
+/* Это всё, дальше не редактируем. Успехов! */
 
-/** Absolute path to the WordPress directory. */
+/** Абсолютный путь к директории WordPress. */
+define( 'WP_SITEURL', 'http://konsult.cessel.bget.ru/' );
 if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', __DIR__ . '/' );
+	define( 'ABSPATH', dirname(__FILE__) . '/' );
 }
 
-/** Sets up WordPress vars and included files. */
+/** Инициализирует переменные WordPress и подключает файлы. */
 require_once ABSPATH . 'wp-settings.php';
