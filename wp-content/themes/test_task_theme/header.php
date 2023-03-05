@@ -19,6 +19,6 @@
 </head>
 <body <?php body_class(); ?>>
 <header class="header">
-    <p>HEADER</p>
+    <p>Header</p>
 </header>
 <main>
