@@ -10,6 +10,8 @@ function CWG_scripts() {
 	wp_deregister_script( 'jquery' );
 	wp_enqueue_script('jquery',$uri_node_js.'/jquery/dist/jquery.min.js','',$v,true);
 	wp_enqueue_script('main',$uri_js.'/misc.js','',$v,true);
+
+	wp_enqueue_style('styles',$uri_css.'/styles.css','',$v);
 }
 
 add_action( 'wp_enqueue_scripts', 'CWG_scripts' );
