@@ -7,7 +7,18 @@ function CWG_scripts() {
 	$uri_css = get_template_directory_uri() . '/assets/css';
 	$uri_js  = get_template_directory_uri() . '/assets/js';
 	wp_deregister_script( 'jquery' );
-	wp_enqueue_script('jquery',$uri_js.'/misc.js','',$v);
+	wp_enqueue_script('main',$uri_js.'/misc.js','',$v,'');
 }
 
 add_action( 'wp_enqueue_scripts', 'CWG_scripts' );
+
+add_filter( 'script_loader_tag', 'scripts_as_es6_modules', 10, 3 );
+
+function scripts_as_es6_modules( $tag, $handle, $src ) {
+
+	if ( $handle === 'main' ) {
+		return str_replace( '<script ', '<script type="module"', $tag );
+	}
+
+	return $tag;
+}

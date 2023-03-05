@@ -1,6 +1,6 @@
-import {$,jQuery} from 'jquery';
-$ = require('jquery');
-window.$ = $;
-window.jQuery = jQuery;
+import $ from '../node_modules/jquery/dist/jquery.min.js';
 
-console.log($);
+$(document).ready(function() {
+    console.log($);
+});
+
